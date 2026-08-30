@@ -1,0 +1,24 @@
+
+    "model__alpha": [0.001, 0.01, 0.1, 1.0, 10.0],
+    "model__l1_ratio": [0.0, 0.5, 1.0],
+
+    model = ElasticNet(max_iter=1000)
+
+    pipe = Pipeline(
+        [
+            ("imputer", SimpleImputer(strategy="median")),
+            ("scaler", StandardScaler()),
+            ("model", model),
+        ]
+    )
+
+    cv = KFold(n_splits=5, shuffle=True, random_state=SEED)
+
+    gscv = GridSearchCV(
+        pipe,
+        param_grid=param_grid,
+        scoring="neg_root_mean_squared_error",
+        cv=cv,
+        n_jobs=-1,
+        refit=True,
+    )
