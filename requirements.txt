@@ -1,0 +1,9 @@
+# Pin exact versions before submission, e.g., numpy==1.26.4
+# Include only libraries you actually use.
+scikit-learn == 1.9.0
+numpy == 2.5.2
+matplotlib == 3.11.1
+pandas == 3.0.5
+jupyterlab == 4.6.3
+ruff == 0.16.4
+nbstripout == 0.9.1
